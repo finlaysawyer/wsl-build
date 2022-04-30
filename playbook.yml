@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become: true
+  become_method: sudo
+  vars:
+    wsl_distro: Ubuntu-22.04
+  roles:
+    - aws-cli-v2
+    - aws-sam-cli
+    - azure-cli
+    - docker

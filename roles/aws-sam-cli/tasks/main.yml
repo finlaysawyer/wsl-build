@@ -1,0 +1,26 @@
+---
+- name: Download AWS SAM CLI
+  get_url:
+    url: https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip
+    dest: /tmp/awssamcli.zip
+
+- name: Create temp directory
+  file:
+    path: /tmp/awssamcli
+    state: directory
+
+- name: Unzip AWS CLI
+  unarchive:
+    src: /tmp/awssamcli.zip
+    dest: /tmp/awssamcli
+
+- name: Install AWS CLI
+  command: sudo /tmp/awssamcli/install --update
+
+- name: Cleanup installation files
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /tmp/awssamcli
+    - /tmp/awssamcli.zip

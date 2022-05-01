@@ -6,6 +6,7 @@
     wsl_distro: Ubuntu-22.04
   roles:
     - python
+    - nodejs
     - aws-cli-v2
     - aws-sam-cli
     - azure-cli

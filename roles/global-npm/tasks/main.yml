@@ -1,0 +1,7 @@
+---
+- name: Install Global NPM packages
+  community.general.npm:
+    global: true
+    name: "{{ item }}"
+  with_items:
+    - aws-cdk

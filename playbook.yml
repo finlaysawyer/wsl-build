@@ -7,6 +7,7 @@
   roles:
     - python
     - nodejs
+    - global-npm
     - aws-cli-v2
     - aws-sam-cli
     - azure-cli

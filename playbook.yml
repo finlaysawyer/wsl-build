@@ -5,6 +5,7 @@
   vars:
     wsl_distro: Ubuntu-22.04
   roles:
+    - wsl-config
     - python
     - nodejs
     - global-npm

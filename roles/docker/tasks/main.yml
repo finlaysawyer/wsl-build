@@ -47,3 +47,11 @@
      mkdir -pm o=,ug=rwx "$DOCKER_LOG_DIR"
      /mnt/c/Windows/System32/wsl.exe -d $DOCKER_DISTRO sh -c "nohup sudo -b dockerd < /dev/null > $DOCKER_LOG_DIR/dockerd.log 2>&1"
     marker: "# {mark} ANSIBLE MANAGED BLOCK - docker"
+
+- name: Grant passwordless access to dockerd
+  community.general.sudoers:
+    name: dockerd-access
+    state: present
+    group: docker
+    nopassword: true
+    commands: /usr/bin/dockerd

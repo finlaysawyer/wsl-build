@@ -5,11 +5,13 @@
   vars:
     wsl_distro: Ubuntu-22.04
   roles:
+    - global-apt
     - wsl-config
     - python
     - nodejs
     - global-npm
     - aws-cli-v2
-    - aws-sam-cli
     - azure-cli
     - docker
+    - kubectl
+    - helm

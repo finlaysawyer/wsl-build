@@ -1,14 +1,4 @@
 ---
-- name: Install apt pre-reqs
-  apt:
-    pkg:
-      - ca-certificates
-      - curl
-      - gnupg
-      - lsb-release
-    state: latest
-    update_cache: true
-
 - name: Add Docker GPG key
   shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --batch --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 

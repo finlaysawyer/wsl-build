@@ -9,6 +9,7 @@ Run with `ansible-playbook playbook.yml -K`
 ## Roles
 
 * `wsl-config` - Installs a global `.wslconfig` for resource limits and distro-specific configuration via `wsl.conf`
+* `global-apt` - Installs common packages via apt
 * `python` - Installs recent Python versions via the `deadsnakes` ppa
 * `nodejs` - Installs Node.js LTS
 * `global-npm` - Installs common global NPM packages
@@ -16,3 +17,5 @@ Run with `ansible-playbook playbook.yml -K`
 * `aws-sam-cli` - Installs/upgrades AWS SAM CLI
 * `azure-cli` - Installs/upgrades Azure CLI
 * `docker` - Installs Docker CE, based on [this guide](https://dev.to/bowmanjd/install-docker-on-windows-wsl-without-docker-desktop-34m9) for WSL specifics.
+* `kubectl` - Installs kubectl
+* `helm` - Installs Helm

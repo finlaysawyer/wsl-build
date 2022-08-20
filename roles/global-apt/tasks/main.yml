@@ -1,0 +1,12 @@
+---
+- name: Install Global packages via apt
+  apt:
+    pkg:
+      - unzip
+      - curl
+      - ca-certificates
+      - apt-transport-https
+      - gnupg
+      - lsb-release
+    state: latest
+    update_cache: true

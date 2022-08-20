@@ -1,0 +1,13 @@
+---
+- name: Add Helm GPG key
+  shell: curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+
+- name: Add Helm repository
+  shell: echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
+- name: Install Helm
+  apt:
+    pkg:
+      - helm
+    state: latest
+    update_cache: true

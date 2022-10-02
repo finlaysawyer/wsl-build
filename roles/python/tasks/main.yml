@@ -20,5 +20,7 @@
       - python3.10
       - python3.10-venv
       - python3.10-distutils
+      - python3.11
+      - python3.11-venv
     state: latest
     update_cache: true

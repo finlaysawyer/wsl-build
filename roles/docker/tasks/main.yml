@@ -1,4 +1,8 @@
 ---
+- name: Test for systemd
+  shell: ps --no-headers -o comm 1
+  register: init_daemon
+
 - name: Add Docker GPG key
   shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --batch --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
@@ -22,11 +26,13 @@
   user:
     name: finlay
     groups: docker
+  when: init_daemon.stdout == "init"
 
 - name: Configure legacy iptables
   community.general.alternatives:
     name: iptables
     path: /usr/sbin/iptables-legacy
+  when: init_daemon.stdout == "init"
 
 - name: Add Docker startup in .bashrc
   blockinfile:
@@ -37,6 +43,7 @@
      mkdir -pm o=,ug=rwx "$DOCKER_LOG_DIR"
      /mnt/c/Windows/System32/wsl.exe -d $DOCKER_DISTRO sh -c "nohup sudo -b dockerd < /dev/null > $DOCKER_LOG_DIR/dockerd.log 2>&1"
     marker: "# {mark} ANSIBLE MANAGED BLOCK - docker"
+  when: init_daemon.stdout == "init"
 
 - name: Grant passwordless access to dockerd
   community.general.sudoers:
@@ -45,3 +52,4 @@
     group: docker
     nopassword: true
     commands: /usr/bin/dockerd
+  when: init_daemon.stdout == "init"

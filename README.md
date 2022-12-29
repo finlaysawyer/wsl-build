@@ -1,3 +1,5 @@
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/finlaysawyer/wsl-build/master.svg)](https://results.pre-commit.ci/latest/github/finlaysawyer/wsl-build/master)
+
 # wsl-build
 
 A set of Ansible roles I use to configure my dev build on WSL 2.
